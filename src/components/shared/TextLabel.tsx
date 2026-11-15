@@ -15,7 +15,7 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   function TextField(
-    { label, hasError, helpMessage, onFocus, onBlur, ...props },
+    {label, hasError, helpMessage, onFocus, onBlur, ...props},
     ref,
   ) {
     const [focused, setFocused] = useState(false);
@@ -38,7 +38,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             typography="t7"
             color={labelColor}
             display="inline-block"
-            style={{ marginBottom: 6 }}
+            style={{marginBottom: 6}}
           >
             {label}
           </Text>
@@ -50,13 +50,14 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           onFocus={handleFocus}
           onBlur={handleBlur}
           {...props}
+          style={{borderWidth: 1, borderColor: "#ccc"}}
         />
         {helpMessage ? (
           <Text
             typography="t7"
             color={labelColor}
             display="inline-block"
-            style={{ marginTop: 6, fontSize: 12 }}
+            style={{marginTop: 6, fontSize: 12}}
           >
             {helpMessage}
           </Text>

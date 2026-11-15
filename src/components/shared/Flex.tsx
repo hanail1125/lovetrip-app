@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { CSSProperties } from 'react';
-import { SerializedStyles } from '@emotion/react';
+import {CSSProperties} from 'react';
+import {SerializedStyles} from '@emotion/react';
 
 interface Flexprops {
   align?: CSSProperties['alignItems'];
@@ -9,7 +9,7 @@ interface Flexprops {
   css?: SerializedStyles | SerializedStyles[];
 }
 
-const Flex = styled.div<Flexprops>(({ align, justify, direction }) => ({
+const Flex = styled.div<Flexprops>(({align, justify, direction}) => ({
   display: 'flex',
   alignItems: align,
   justifyContent: justify,

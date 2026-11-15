@@ -1,4 +1,5 @@
 import { Hotel, ReservationForm } from '@/models/hotel';
+import { css } from '@emotion/react';
 import { Fragment, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import FixedBottomButton from '../shared/FixedBottomButton';
@@ -63,7 +64,7 @@ function Form({
   );
 
   return (
-    <div style={{ padding: 24 }}>
+    <div css={cardStyles}>
       <Text bold={true}>예약 정보</Text>
       <Spacing size={10} />
 
@@ -99,5 +100,12 @@ const VALIDATION_MESSAGE_MAP: {
     message: '※이메일 형식이 올바르지 않습니다. (예. example@example.com)',
   },
 };
+
+const cardStyles = css`
+  padding: 22px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 28px rgba(28, 25, 23, 0.05);
+`;
 
 export default Form;

@@ -1,16 +1,16 @@
 import useShare from '@hooks/useShare';
-import { Hotel } from '@models/hotel';
+import {Hotel} from '@models/hotel';
 import Flex from '@shared/Flex';
 import Spacing from '@shared/Spacing';
 import Text from '@shared/Text';
-import { css } from '@emotion/react';
+import {css} from '@emotion/react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import useLike from '@hooks/like/useLike';
 
-function ActionButtons({ hotel }: { hotel: Hotel }) {
+function ActionButtons({hotel}: {hotel: Hotel;}) {
   const share = useShare();
-  const { data: likes, mutate: like } = useLike();
-  const { name, comment, mainImageUrl, id } = hotel;
+  const {data: likes, mutate: like} = useLike();
+  const {name, comment, mainImageUrl, id} = hotel;
 
   const isLike = Boolean(likes?.find((like) => like.hotelId === hotel.id));
 
@@ -70,7 +70,7 @@ function Button({
   onClick?: () => void;
 }) {
   return (
-    <Flex direction="column" align="center" onClick={onClick}>
+    <Flex direction="column" align="center" onClick={onClick} css={itemStyles}>
       <img src={iconUrl} alt="" width={30} height={30} />
       <Spacing size={6} />
       <Text typography="t7">{label}</Text>
@@ -79,11 +79,20 @@ function Button({
 }
 
 const containerStyles = css`
-  padding: 24px;
+  padding: 8px 24px 16px;
   cursor: pointer;
+  gap: 10px;
   & * {
     flex: 1;
   }
+`;
+
+const itemStyles = css`
+  padding: 14px 8px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 5px 10px rgba(28, 25, 23, 0.1);
+  border: 1px solid rgba(218, 218, 218, 0.35);
 `;
 
 export default ActionButtons;

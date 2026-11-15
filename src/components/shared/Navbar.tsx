@@ -56,7 +56,7 @@ const Navbar = () => {
 
   return (
     <Flex css={navbarContaninerStyle}>
-      <Link to="/">Love Trip</Link>
+      <Link to="/">LoveTrip.com</Link>
       {renderButton()}
     </Flex>
   );
@@ -72,9 +72,9 @@ const navbarContaninerStyle = css`
   top: 0;
   background-color: ${colors.white};
   z-index: 10;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 20px;
-  color: #951235;
+  color: #e63f22;
 `;
 
 export default Navbar;

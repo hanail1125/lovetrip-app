@@ -1,4 +1,4 @@
-import { Colors, colors } from '@styles/colorPalette';
+import {Colors, colors} from '@styles/colorPalette';
 import styled from '@emotion/styled';
 
 interface TagProps {
@@ -7,11 +7,11 @@ interface TagProps {
 }
 
 const Tag = styled.span<TagProps>(
-  ({ color = colors.white, backgroundColor = colors.blue }) => ({
+  ({color = colors.white, backgroundColor = colors.blue}) => ({
     fontSize: '11px',
-    padding: '4px 5px',
+    padding: '8px 9px',
     fontWeight: 'bold',
-    borderRadius: '2px',
+    borderRadius: '15px',
     textAlign: 'center',
     color: color in colors ? colors[color as Colors] : color,
     backgroundColor:

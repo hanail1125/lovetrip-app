@@ -20,20 +20,20 @@ function Summary({
   nights,
 }: SummaryProps) {
   return (
-    <div style={{ padding: 24 }}>
+    <div css={cardStyles}>
       <Text typography="t4" bold={true}>
         {hotelName}
       </Text>
-      <Spacing size={8} />
+      <Spacing size={12} />
       <img
         src={room.imageUrl}
         css={imageStyles}
         alt={`${room.roomName}의 이미지`}
       />
-      <Spacing size={20} />
+      <Spacing size={16} />
       <div>
         <Text bold={true}>{room.roomName}</Text>
-        <Spacing size={8} />
+        <Spacing size={12} />
         <ul css={listStyles}>
           <Flex as="li" justify={'space-between'}>
             <Text color="gray600" typography="t6">
@@ -71,17 +71,24 @@ const INFO_LBAEL_MAP = {
   smoke: '흡연여부',
 };
 
+const cardStyles = css`
+  padding: 22px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 28px rgba(28, 25, 23, 0.05);
+`;
+
 const listStyles = css`
   li:not(:last-child) {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 `;
 
 const imageStyles = css`
   width: 100%;
-  height: 100px;
+  height: 180px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 18px;
 `;
 
 export default Summary;

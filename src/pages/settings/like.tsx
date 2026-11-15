@@ -2,6 +2,7 @@ import FixedBottomButton from '@components/shared/FixedBottomButton';
 import {Like} from '@models/like';
 import useEditLike from '@components/setting/like/hooks/useEditLike';
 import ListRow from '@shared/ListRow';
+import {css} from '@emotion/react';
 import {useEffect, useState} from 'react';
 import {
    DragDropContext,
@@ -46,13 +47,19 @@ function LikePage() {
    const mocks = generateMocks();
 
    return (
-      <div>
+      <div css={pageStyles}>
+         <header css={headerStyles}>
+            <p css={eyebrowStyles}>Wishlist</p>
+            <h1 css={titleStyles}>찜하기</h1>
+            <p css={subTitleStyles}>찜한 호텔을 길게 눌러 순서를 바꿀 수 있습니다</p>
+         </header>
          <DragDropContext onDragEnd={handleDragEndDrop}>
             <StrictModeDroppable droppableId="likes">
                {(droppableProps) => (
                   <ul
                      ref={droppableProps.innerRef}
                      {...droppableProps.droppableProps}
+                     css={listStyles}
                   >
                      <Virtuoso
                         useWindowScroll
@@ -65,9 +72,11 @@ function LikePage() {
                                        ref={draggableProps.innerRef}
                                        {...draggableProps.draggableProps}
                                        {...draggableProps.dragHandleProps}
+                                       css={itemStyles}
                                     >
                                        <ListRow
                                           as="div"
+                                          style={rowStyles}
                                           contents={
                                              <ListRow.Texts
                                                 title={like.order}
@@ -109,5 +118,58 @@ function StrictModeDroppable({children, ...props}: DroppableProps) {
 
    return <Droppable {...props}>{children}</Droppable>;
 }
+
+const pageStyles = css`
+   min-height: calc(100vh - 65px);
+   background: linear-gradient(180deg, #f7f3ee 0%, #fbfaf8 180px, #ffffff 100%);
+`;
+
+const headerStyles = css`
+   padding: 32px 24px 12px;
+   max-width: 720px;
+   margin: 0 auto;
+`;
+
+const eyebrowStyles = css`
+   margin: 0 0 10px;
+   font-size: 12px;
+   letter-spacing: 0.18em;
+   text-transform: uppercase;
+   color: #9a6b4f;
+   font-weight: 600;
+`;
+
+const titleStyles = css`
+   margin: 0;
+   font-size: 30px;
+   line-height: 1.25;
+   font-weight: 800;
+   letter-spacing: -0.04em;
+   color: #1c1917;
+`;
+
+const subTitleStyles = css`
+   margin: 10px 0 0;
+   font-size: 15px;
+   line-height: 1.55;
+   color: rgba(28, 25, 23, 0.62);
+`;
+
+const listStyles = css`
+   max-width: 720px;
+   margin: 0 auto;
+   padding: 8px 16px 96px;
+`;
+
+const itemStyles = css`
+   padding-bottom: 10px;
+`;
+
+const rowStyles = css`
+   padding: 16px 18px;
+   background: #ffffff;
+   border-radius: 20px;
+   box-shadow: 0 10px 28px rgba(28, 25, 23, 0.05);
+`;
 
 export default LikePage;
