@@ -1,13 +1,13 @@
-import { MouseEvent, useEffect, useState } from 'react';
+import {MouseEvent, useEffect, useState} from 'react';
 import Flex from '@shared/Flex';
 import Text from '@shared/Text';
-import { Hotel } from '@models/hotel';
-import { css } from '@emotion/react';
+import {Hotel} from '@models/hotel';
+import {css} from '@emotion/react';
 import addDelimiter from '@/utils/addDelimiter';
 import Tag from '../shared/Tag';
-import { differenceInMilliseconds, parseISO } from 'date-fns';
+import {differenceInMilliseconds, parseISO} from 'date-fns';
 import formatTime from '@/utils/formatTime';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const HotelItem = ({
   hotel,
@@ -51,7 +51,7 @@ const HotelItem = ({
       return null;
     }
 
-    const { name, tagThemeStyle } = hotel.events;
+    const {name, tagThemeStyle} = hotel.events;
 
     const promotionTxt =
       remainedTime > 0 ? ` - ${formatTime(remainedTime)} 남음` : '';
@@ -187,6 +187,7 @@ const bodyStyles = css`
 const nameStyles = css`
   letter-spacing: -0.03em;
   line-height: 1.3;
+  font-size: 18px;
 `;
 
 const commentStyles = css`
