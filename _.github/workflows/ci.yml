@@ -1,6 +1,13 @@
 name: CI
 
-on: [pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   lint:
@@ -8,12 +15,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
           cache: 'yarn'
-      - run: yarn install
+      - run: corepack enable
+      - run: yarn install --immutable
       - run: yarn lint
 
   build:
@@ -21,10 +29,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '22'
+          node-version: '24'
           cache: 'yarn'
-      - run: yarn install
-      - run: CI='false' yarn build
+      - run: corepack enable
+      - run: yarn install --immutable
+      - run: yarn build
